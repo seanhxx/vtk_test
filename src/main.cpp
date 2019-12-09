@@ -97,9 +97,7 @@ void RunVTK()
 {
     vtkSmartPointer<vtkWin32OpenGLRenderWindow> renderWindow = vtkSmartPointer<vtkWin32OpenGLRenderWindow>::New();
 /*     vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow = vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New(); */
-/*     renderWindow->OpenGLInitContext();
-    renderWindow->OpenGLInitState();
-    renderWindow->MakeCurrent(); */
+    renderWindow->OpenGLInitContext();
 
     vtkSmartPointer<vtkGenericRenderWindowInteractor> Iren = vtkSmartPointer<vtkGenericRenderWindowInteractor>::New();
     vtkSmartPointer<vtkRenderer> ren = vtkSmartPointer<vtkRenderer>::New();
@@ -124,10 +122,14 @@ void RunVTK()
 
     ren->ResetCamera();
     ren->GetActiveCamera()->Zoom(1.5);
+
+/*     renderWindow->OpenGLInitState();
+    renderWindow->MakeCurrent(); */
+
     renderWindow->Render();
     renderWindow->SetWindowName("First Window");
 
-    Iren->Initialize();
+/*     Iren->Initialize(); */
     Iren->Start();
 
     std::cout << "Window 1 closed..." << std::endl;
